@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/user_profile_layout"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_profile_image"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:elevation="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
+                app:civ_border_color="@android:color/black"
+                app:civ_border_width="2dp"
+                android:src="@drawable/ic_my_profile"
+                android:layout_marginBottom="10dp"
+                android:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/user_fullname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:layout_toRightOf="@+id/user_profile_image"
+                android:background="@android:color/white"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/profile"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_profile"
+                        android:layout_height="30dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        android:textStyle="bold"
+                        android:text="Profiile"
+                        android:textSize="15sp"
+                        android:textColor="#424242"/>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:id="@+id/find_doc"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_doctor"
+                        android:layout_height="30dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        android:text="Find Doctor"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+
+                        android:textColor="#424242"/>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:id="@+id/medical_doc"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_medical_report"
+                        android:layout_height="30dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        android:text="Medical Report"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+
+                        android:textColor="#424242"/>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:id="@+id/my_cart"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_add_cart"
+                        android:layout_height="30dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        android:text="My Cart"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+
+                        android:textColor="#424242"/>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:id="@+id/my_order"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_my_order"
+                        android:layout_height="30dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        android:text="My order"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+
+                        android:textColor="#424242"/>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:id="@+id/upload_room"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_flat"
+                        android:layout_height="30dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        android:text="Uploaded room"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+
+                        android:textColor="#424242"/>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:id="@+id/upload_sale"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_sale"
+                        android:layout_height="30dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        android:text="Uploaded sale"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:textColor="#424242"/>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:id="@+id/notification"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_notification"
+                        android:layout_height="30dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        android:id="@+id/notification_active"
+                        android:text="notification"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+
+                        android:textColor="#424242"/>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:id="@+id/card_change"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_password"
+                        android:layout_height="30dp"
+                       />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        android:text="Change Password"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:textColor="#424242"/>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/logout"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_logout"
+                        android:layout_height="30dp"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:text="Log out"
+
+                        android:textColor="#424242"/>
+
+
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:id="@+id/help"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_red_light"
+                        android:layout_height="30dp"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:text="Emergency"
+
+                        android:textColor="#424242"/>
+
+
+
+                </LinearLayout>
+
+
+
+                <!--Update User Details-->
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</RelativeLayout>

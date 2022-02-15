@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".about_activity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@drawable/aaa"
+        android:layout_height="wrap_content"/>
+    <TextView
+
+
+        android:layout_width="match_parent"
+        android:text="Introduction: \nThis application is created and published by lmaniya team.
+This application helps online business people, public, student, business man can all benefit from this application, this application can create cafe profile, mobile gallery profile, computer center profile, electronic shop profile, clothes shop profile. Through this application, users can easily find their nearest school / college, bank, hospital, profiled shop.
+They can buy and sell their house, land, any other things like bikes, cars, mobiles \n Feature:
+\n ->
+Hotels, cafes, grocery stores, clothing stores, mobile stores and any other businesses can be profiled and infinite items can be moved within the profile.\n
+->Users can place orders from anywhere, and profiled shop owners can deliver orders at any place.\n
+->Users can find out about any store without knowing about that  store, what kind of store is needed ,in the mobile application there is a option called near me , click  on  5 km radius
+All the shops are visible \n
+->If a shop owner has created a profile of his shop, the location of that shop can be shown on Google map and everyone can know how far that shop is and how long it takes to reach.\n
+-> The user can easily find out about bank, hospital, school / college while anyone new in any city\n
+-> Anyone can upload their room for rent or can search room for rent ,also they can search room by near by option ,ie
+they can find room with in 5 km radius where they stay \n
+-> Any  one can find anything (car,bike,mobile,laptop,house,land ) for sale  and they can upload anything(car,bike,mobile ,house etc"
+        android:layout_margin="20sp"
+        android:textColor="@android:color/black"
+        android:layout_height="wrap_content">
+
+    </TextView>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

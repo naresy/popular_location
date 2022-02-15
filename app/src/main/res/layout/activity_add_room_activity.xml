@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".add_room.add_room_activity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:src="@drawable/ic_room"
+            android:layout_weight="1"
+            android:id="@+id/image"
+            android:layout_height="200sp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:src="@drawable/ic_room"
+            android:layout_weight="1"
+            android:id="@+id/image1"
+            android:layout_height="200sp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="5sp"
+            android:text="Room Title"
+            android:layout_weight="3"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content">
+        </TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/room_tpe"
+            android:hint="eg single room ,double room"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="5sp"
+            android:text="Owner Name"
+            android:layout_weight="3"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content">
+        </TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/owner_name"
+            android:hint="owner name"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="5sp"
+            android:text="Owner phone"
+            android:layout_weight="3"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content">
+        </TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/owner_phone"
+            android:hint="Owner Phone"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="5sp"
+            android:text="Location"
+            android:layout_weight="3"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content">
+        </TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/full_address"
+            android:hint="Full Address"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="5sp"
+            android:text="Latitude"
+            android:layout_weight="3"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content">
+        </TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/latitude"
+            android:hint="Latitude"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="5sp"
+            android:text="Longitude"
+            android:layout_weight="3"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content">
+        </TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/longitude"
+            android:hint="Longitude"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:text="get latitude longitude"
+        android:textAlignment="textEnd"
+        android:id="@+id/get"
+        android:textColor="@color/colorPrimary"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text=" Please write description as much as clear "
+        android:textAlignment="center"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:padding="5sp"
+            android:text="Description"
+            android:layout_weight="3"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content">
+        </TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/description"
+            android:hint="Description"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_margin="10sp"
+        android:id="@+id/add"
+        android:text="Upload room for rent"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

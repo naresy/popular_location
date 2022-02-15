@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:background="@drawable/sho"
+        android:layout_height="400sp">
+
+    </pl.droidsonroids.gif.GifImageView>
+    <TextView
+        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:fontFamily="@font/almendra_display"
+        android:text="Buy your favourite Thing from here and enjoy with your selection  "
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

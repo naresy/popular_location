@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_room"
+            android:icon="@drawable/ic_room"
+            android:title="Find Room" />
+        <item
+            android:id="@+id/nav_sale"
+            android:icon="@drawable/ic_sale"
+            android:title="Sale" />
+<!--        <item-->
+<!--            android:id="@+id/nav_slideshow"-->
+<!--            android:icon="@drawable/ic_menu_slideshow"-->
+<!--            android:title="@string/menu_slideshow" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_emergency"-->
+<!--            android:icon="@drawable/ic_red_light"-->
+<!--            android:title="Help" />-->
+    </group>
+    <item android:title="Home">
+        <menu>
+            <item android:title="My profile"
+                android:icon="@drawable/ic_my_profile"
+                android:id="@+id/nav_my_profile"/>
+            <item android:title="My cart"
+                android:icon="@drawable/ic_add_cart"
+                android:id="@+id/nav_my_cart"/>
+        </menu>
+
+    </item>
+
+    <item android:title="Find">
+        <menu>
+            <item android:title="School"
+                android:icon="@drawable/ic_school"
+                android:id="@+id/nav_school"/>
+            <item android:title="Office"
+                android:icon="@drawable/ic_office"
+                android:id="@+id/nav_office"/>
+            <item android:title="Bank"
+                android:icon="@drawable/ic_bank"
+                android:id="@+id/nav_bank"/>
+            <item android:title="Hospital"
+                android:icon="@drawable/ic_hospital1"
+                android:id="@+id/nav_hospital"/>
+            <item android:title="IME center"
+                android:icon="@drawable/ic_ime"
+                android:id="@+id/nav_ime"/>
+        </menu>
+
+    </item>
+
+
+
+    <item android:title="communication">
+        <menu>
+            <item
+                android:title="About us"
+                android:icon="@drawable/about"
+                android:id="@+id/about_us" />
+            <item
+                android:title="Contact us"
+                android:icon="@drawable/ic_contact"
+                android:id="@+id/contact_us"/>
+            <item
+
+                android:title="Terms and condition"
+                android:icon="@drawable/ic_shop"
+                android:id="@+id/terms_conditions"/>
+
+        </menu>
+    </item>
+</menu>

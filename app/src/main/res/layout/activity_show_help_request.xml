@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".help.show.show_help_request">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/profile"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:src="@drawable/ic_profile"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+
+            android:textStyle="bold"
+            android:text="Out Help Request=>"
+            android:textSize="15sp"
+            android:layout_weight="4"
+            android:textColor="#424242"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textAlignment="textStart"
+            android:id="@+id/out_help_num"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:hint="000"
+            android:textSize="15sp"
+            android:layout_weight="6"
+            android:textColor="@android:color/holo_red_dark"
+            tools:ignore="RtlCompat" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingTop="10dp"
+        android:id="@+id/my_oredr"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="20dp">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:src="@drawable/ic_doctor"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:text="User Help Request"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:textSize="15sp"
+
+            android:textColor="#424242"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/user_help_num"
+            android:layout_weight="3"
+            android:textSize="15sp"
+            android:padding="30sp"
+            android:text="aaa"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingTop="10dp"
+        android:id="@+id/bill_generate"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:src="@drawable/ic_medical_report"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:text="We helped Till"
+            android:textStyle="bold"
+            android:textSize="15sp"
+             android:layout_weight="1"
+            android:textColor="#424242"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/total_done_help"
+            android:layout_weight="3"
+            android:textSize="15sp"
+            android:padding="30sp"
+            android:layout_height="wrap_content"/>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

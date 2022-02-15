@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lmaniya.loocall">
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.GET_ACCOUNTS"
+        android:maxSdkVersion="22" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".login.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".welcome_activity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Main_page_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".contact_us_activity"
+            android:parentActivityName=".Main_page_activity" />
+        <activity
+            android:name=".about_activity"
+            android:parentActivityName=".Main_page_activity" />
+        <activity android:name=".fetch_shop.near_by_shop" />
+        <activity android:name=".super_admin.req_area.sale_req.accept_sale" />
+        <activity android:name=".super_admin.req_area.sale_req.req_sale_activity" />
+        <activity
+            android:name=".login.profile.sale.sale_detail"
+            android:parentActivityName=".login.profile.user_profile_activity" />
+        <activity
+            android:name=".login.profile.sale.fetch_all_upload_sale"
+            android:parentActivityName=".login.profile.user_profile_activity" />
+        <activity
+            android:name=".login.profile.room.fetch_detail_activity"
+            android:parentActivityName=".login.profile.user_profile_activity" />
+        <activity
+            android:name=".login.profile.room.fetch_room_uploaded"
+            android:parentActivityName=".login.profile.user_profile_activity" />
+        <activity
+            android:name=".shell.near_me_sale"
+            android:parentActivityName=".Main_page_activity" />
+        <activity
+            android:name=".shell.add_shell_activity"
+            android:parentActivityName=".shell.shell_activity" />
+        <activity
+            android:name=".shell.shell_detail_activity"
+            android:parentActivityName=".shell.shell_activity" />
+        <activity
+            android:name=".shell.shell_activity"
+            android:parentActivityName=".Main_page_activity" />
+        <activity
+            android:name=".business_user_profile.print.print_bill_for_admin"
+            android:parentActivityName=".business_user_profile.business_user_profile" />
+        <activity
+            android:name=".add_room.near_me_room"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.req_area.accept_room_req"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.req_area.room_request_activity"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".add_room.detail_activity"
+            android:parentActivityName=".add_room.see_room_activity" />
+        <activity
+            android:name=".add_room.add_room_activity"
+            android:parentActivityName=".add_room.see_room_activity" />
+        <activity
+            android:name=".add_room.see_room_activity"
+            android:parentActivityName=".Main_page_activity" />
+        <activity
+            android:name=".show_section.near_me_hospital.near_me_hospital"
+            android:parentActivityName=".Main_page_activity" />
+        <activity
+            android:name=".super_admin.school.update_hospital"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.school.school_activity"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.school.add_hospital"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".show_section.near_me_school.near_me_school"
+            android:parentActivityName=".Main_page_activity" />
+        <activity
+            android:name=".super_admin.hospital.update_school"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.hospital.add_school"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.hospital.hospital_activity"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".show_section.near_by_me"
+            android:parentActivityName=".Main_page_activity" />
+        <activity
+            android:name=".super_admin.bank.update_bank"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.bank.add_bank"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.bank.bank_activity"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".business_user_profile.previous.detail_activity"
+            android:parentActivityName=".business_user_profile.previous.see_user_previous_cart" />
+        <activity
+            android:name=".business_user_profile.previous.see_user_previous_cart"
+            android:parentActivityName=".business_user_profile.business_user_profile" />
+        <activity android:name=".super_admin.profile.my_profile" />
+        <activity android:name=".fcm.fcm" />
+        <activity
+            android:name=".super_admin.view_shop.shop_detail_activity"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.view_all_user.view_all_user_acitivity"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.view_shop.view_all_shop_activity"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".business_user_profile.see_bill_statement"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".direct.Direct_product_activity"
+            android:parentActivityName=".Main_page_activity" />
+        <activity
+            android:name=".business_user_profile.order.order_by_user_activity"
+            android:parentActivityName=".business_user_profile.business_user_profile" />
+        <activity
+            android:name=".business_user_profile.order.see_order_activity"
+            android:parentActivityName=".business_user_profile.order.order_by_user_activity" />
+        <activity
+            android:name=".business_user_profile.business_own_profile"
+            android:parentActivityName=".business_user_profile.business_user_profile" />
+        <activity
+            android:name=".fetch_shop.fetch_product.customer.order_detail_activity"
+            android:parentActivityName=".login.profile.user_profile_activity" />
+        <activity
+            android:name=".fetch_shop.fetch_product.customer.delete_user_order"
+            android:parentActivityName=".fetch_shop.fetch_product.customer.order_detail_activity" />
+        <activity
+            android:name=".fetch_shop.fetch_product.customer.cancel_order_activity"
+            android:parentActivityName=".fetch_shop.fetch_product.customer.order_detail_activity" />
+        <activity
+            android:name=".fetch_shop.fetch_product.customer.my_order_activity"
+            android:parentActivityName=".login.profile.user_profile_activity" />
+        <activity
+            android:name=".fetch_shop.fetch_product.customer.print_bill_activity"
+            android:parentActivityName=".login.profile.user_profile_activity" />
+        <activity
+            android:name=".fetch_shop.fetch_product.customer.product_update_activity"
+            android:parentActivityName=".fetch_shop.fetch_product.customer.my_cart_activity" />
+        <activity
+            android:name=".fetch_shop.fetch_product.customer.update_user_cart_activity"
+            android:parentActivityName=".fetch_shop.fetch_product.customer.my_cart_activity" />
+        <activity
+            android:name=".fetch_shop.fetch_product.customer.checkout_activity"
+            android:parentActivityName=".fetch_shop.fetch_product.customer.my_cart_activity" />
+        <activity
+            android:name=".fetch_shop.fetch_product.customer.my_cart_activity"
+            android:parentActivityName=".login.profile.user_profile_activity" />
+        <activity android:name=".login.pacage.user_cart_activity" />
+        <activity android:name=".fetch_shop.fetch_product.add_cart_activity" />
+        <activity android:name=".fetch_shop.fetch_product.fetch_product" />
+        <activity android:name=".fetch_shop.shop_detail_activity" />
+        <activity android:name=".business_user_profile.detail_product_activity" />
+        <activity
+            android:name=".business_user_profile.my_product"
+            android:parentActivityName=".business_user_profile.business_user_profile" />
+        <activity
+            android:name=".business_user_profile.add_product_activity"
+            android:parentActivityName=".business_user_profile.show_shop_activity" />
+        <activity
+            android:name=".business_user_profile.show_shop_activity"
+            android:parentActivityName=".business_user_profile.business_user_profile" />
+        <activity
+            android:name=".business_user_profile.add_shop_activity"
+            android:parentActivityName=".business_user_profile.business_user_profile" />
+        <activity android:name=".business_user_profile.business_user_profile" />
+        <activity android:name=".super_admin.update_delete_business_activity" />
+        <activity android:name=".fetch_shop.all_shop_activity" />
+        <activity
+            android:name=".super_admin.add_business_profile.add_business_profile"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.add_business.add_business_activity"
+            android:parentActivityName=".super_admin.super_admin_dash_board" />
+        <activity
+            android:name=".super_admin.super_admin_dash_board"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".help.show.help_detail_activity" />
+        <activity android:name=".help.show.all_help_activity" />
+        <activity android:name=".help.show.show_help_request" />
+        <activity
+            android:name=".login.profile.detail_profile_activity"
+            android:parentActivityName=".login.profile.user_profile_activity" />
+        <activity
+            android:name=".login.profile.user_profile_activity"
+            android:parentActivityName=".Main_page_activity" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name=".help.MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".help.help_and_support" />
+        <activity
+            android:name=".admin.dashboard.dassh_board"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".admin.admin_profile" />
+        <activity android:name=".login.email_verification" />
+        <activity android:name=".login.register" />
+        <activity
+            android:name=".login.login_activity"
+            android:parentActivityName=".Main_page_activity" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main_page_activity" />
+        <activity
+            android:name=".splash_screen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data android:name="com.google.android.gms.version" />
+        <meta-data
+            android:name="firebase_messaging_auto_init_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="firebase_analytics_collection_enabled"
+            android:value="false" />
+
+        <service android:name=".fcm.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".fcm.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

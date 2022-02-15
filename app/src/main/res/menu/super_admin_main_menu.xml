@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_business"
+            android:icon="@drawable/ic_add_bussiness_type"
+            android:title="Add Business" />
+        <item
+            android:id="@+id/nav_my_profile"
+            android:icon="@drawable/ic_my_profile"
+            android:title="My profile" />
+        <item
+            android:id="@+id/my_shop"
+            android:icon="@drawable/ic_dash_board"
+            android:title="All shop" />
+        <item
+            android:id="@+id/all_user"
+            android:icon="@drawable/ic_my_profile"
+            android:title="All user" />
+
+
+
+    </group>
+    <item android:title="Find">
+        <menu>
+            <group>
+                <item android:title="Bank"
+                    android:icon="@drawable/ic_bank"
+                    android:id="@+id/add_bank">
+
+                </item>
+                <item android:title="School/College"
+                    android:icon="@drawable/ic_school"
+                    android:id="@+id/add_school">
+
+                </item>
+                <item android:title="Government office"
+                    android:icon="@drawable/ic_office"
+                    android:id="@+id/add_office">
+
+                </item>
+                <item android:title="Hospital"
+                    android:icon="@drawable/ic_hospital1"
+                    android:id="@+id/nav_hospital">
+
+                </item>
+                <item android:title="IME center"
+                    android:icon="@drawable/ic_ime"
+                    android:id="@+id/add_ime">
+
+                </item>
+            </group>
+        </menu>
+    </item>
+    <item android:title="Request">
+        <menu>
+            <group>
+           <item android:title="Room Request"
+              android:icon="@drawable/ic_req"
+               android:id="@+id/room_req"/>
+                <item android:title="Sale  Request"
+                    android:icon="@drawable/ic_req"
+                    android:id="@+id/shell_req"/>
+    </group>
+        </menu>
+    </item>
+
+
+</menu>

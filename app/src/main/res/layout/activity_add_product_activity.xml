@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/relative"
+    android:layout_height="match_parent"
+    tools:context=".business_user_profile.add_product_activity">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="10sp"
+        app:cardElevation="3dp"
+        app:cardPreventCornerOverlap="false">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="100sp"
+                android:padding="10sp"
+                android:text="Add Photo"
+                android:id="@+id/add_image"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/imageview_id_picture"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_gravity="right|center_vertical"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_person_camera_intele"
+                tools:ignore="VectorDrawableCompat" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="50sp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_home_black_18dp"
+                    android:layout_height="50sp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/product_name"
+                    android:hint="product name here"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10sp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="50sp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_price"
+                    android:layout_height="50sp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:id="@+id/product_start_price"
+                    android:hint="initial price"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10sp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="50sp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_price"
+                    android:layout_height="50sp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:inputType="number"
+                    android:id="@+id/product_final_price"
+                    android:hint="product final price"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10sp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="50sp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_dash_board"
+                    android:layout_height="50sp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/product_description"
+                    android:hint="Description"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10sp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="50sp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_my_product"
+                    android:layout_height="50sp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/code"
+                    android:hint="Code"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10sp"
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="10sp"
+                    android:background="@color/colorPrimary"
+                    android:text="Add product"
+                    android:id="@+id/add_product"
+                    android:textColor="@android:color/white"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="10sp"
+                    android:text="Cancel"
+                    android:id="@+id/cancel"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@android:color/white"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
