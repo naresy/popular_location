@@ -75,6 +75,7 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
     private categories_api_interface categories_api_interface;
     ProgressDialog progressDialog;
     SwipeRefreshLayout swipeRefreshLayout;
+    BottomNavigationBehavior bottomNavigationBehavior;
 
     public static int TYPE_WIFI = 1;
     public static int TYPE_MOBILE = 2;
@@ -82,7 +83,7 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
     private Snackbar snackbar;
     RelativeLayout relativeLayout;
     private boolean internetConnected=true;
-    BottomNavigationBehavior bottomNavigationBehavior;
+
     String role;
     String user_id,user_name;
 
@@ -91,6 +92,8 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
     private  final int id_message=2;
     private  final int id_fast_business=3;
 
+    public  MeowBottomNavigation bottomNavigation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +101,15 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
         setContentView(R.layout.activity_main_page_activity);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        bottomNavigation=findViewById(R.id.negation_main);
+
+
+        bottomNavigation.add(new MeowBottomNavigation.Model(Id_home,R.drawable.ic_house));
+        bottomNavigation.add(new MeowBottomNavigation.Model(id_message,R.drawable.ic_chat));
+        bottomNavigation.add(new MeowBottomNavigation.Model(id_fast_business,R.drawable.ic_direct));
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        bottomNavigationBehavior=new BottomNavigationBehavior();
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -108,6 +118,7 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
         View header = navigationView.getHeaderView(0);
+
         login=header.findViewById(R.id.login_user);
         role=getIntent().getStringExtra("role");
         db = new DatabaseHandler(getApplicationContext());
@@ -118,11 +129,13 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
 // bottom
 
 
-        MeowBottomNavigation bottomNavigation=findViewById(R.id.negation);
-        bottomNavigation.add(new MeowBottomNavigation.Model(Id_home,R.drawable.ic_home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(id_message,R.drawable.ic_chat));
-        bottomNavigation.add(new MeowBottomNavigation.Model(id_fast_business,R.drawable.ic_fast));
 
+        bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+            @Override
+            public void onClickItem(MeowBottomNavigation.Model item) {
+
+            }
+        });
 
 
 
@@ -133,17 +146,17 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
                 String name ;
                 switch (item.getId())
                 {
-                    case Id_home:name="Home";
-                        break;
                     case id_message:name="Message";
                         break;
                     case  id_fast_business:name="Direct Product";
+                        startActivity(new Intent(Main_page_activity.this,Direct_product_activity.class));
                         break;
 
                     default:name="";
 
 
                 }
+
 
             }
         });

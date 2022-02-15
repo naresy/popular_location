@@ -54,7 +54,7 @@
                 </LinearLayout>
 
                 <com.etebarian.meowbottomnavigation.MeowBottomNavigation
-                    android:id="@+id/negation"
+                    android:id="@+id/negation_main"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
