@@ -462,11 +462,11 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
         }
         if (id==R.id.contact_us)
         {
-            startActivity(new Intent(Main_page_activity.this,contact_us_activity.class));
+
         }
         if (id==R.id.nav_ime)
         {
-            startActivity(new Intent(Main_page_activity.this,MainActivity.class));
+
         }
 
 
