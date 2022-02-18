@@ -50,6 +50,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -102,6 +103,9 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         bottomNavigation=findViewById(R.id.negation_main);
+
+        //grid layout manager
+
 
 
         bottomNavigation.add(new MeowBottomNavigation.Model(Id_home,R.drawable.ic_house));
@@ -196,7 +200,19 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
         relativeLayout=findViewById(R.id.main_page_layout);
         progressDialog = new ProgressDialog(this);
         recyclerView = findViewById(R.id.categories_data_view);
-        layoutManager = new LinearLayoutManager(this);
+//        layoutManager = new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(layoutManager);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+
+        // Create a custom SpanSizeLookup where the first item spans both columns
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position == 3 ? 1 : 1;
+            }
+        });
+
+
         recyclerView.setLayoutManager(layoutManager);
         swipeRefreshLayout=findViewById(R.id.swipe);
         progressDialog=new ProgressDialog(this);
@@ -466,7 +482,7 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
         }
         if (id==R.id.nav_ime)
         {
-
+    startActivity(new Intent(Main_page_activity.this,MainActivity.class));
         }
 
 

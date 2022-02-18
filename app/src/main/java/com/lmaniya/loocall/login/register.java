@@ -67,11 +67,11 @@ public class register extends AppCompatActivity {
         setTitle("Register");
 
 
-        fullname = findViewById(R.id.et_name);
-        email = findViewById(R.id.et_email);
-        Password = findViewById(R.id.et_password);
-        Already_have_account = findViewById(R.id.cant_login_id);
-        Sinup = findViewById(R.id.email_sign_in_button);
+        fullname = findViewById(R.id.user_name_register);
+        email = findViewById(R.id.register_user_email);
+        Password = findViewById(R.id.user_password_register);
+        Already_have_account = findViewById(R.id.login_here);
+        Sinup = findViewById(R.id.Register_email);
         relativeLayout = findViewById(R.id.register);
         pDialog = new ProgressDialog(this);
 

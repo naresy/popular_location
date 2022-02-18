@@ -4,7 +4,29 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1125" />
+        <entry key="app/src/main/res/drawable/ic_email.xml" value="0.12760416666666666" />
+        <entry key="app/src/main/res/drawable/ic_email_icon.xml" value="0.12447916666666667" />
+        <entry key="app/src/main/res/drawable/ic_facebook.xml" value="0.12760416666666666" />
+        <entry key="app/src/main/res/drawable/ic_location.xml" value="0.12447916666666667" />
+        <entry key="app/src/main/res/drawable/ic_pass.xml" value="0.12760416666666666" />
+        <entry key="app/src/main/res/drawable/ic_password.xml" value="0.12760416666666666" />
+        <entry key="app/src/main/res/drawable/ic_person_icon.xml" value="0.12447916666666667" />
+        <entry key="app/src/main/res/layout/activity_all_shop_activity.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/layout/activity_detail_product_activity.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/layout/activity_direct_product_activity.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/layout/activity_login_activity.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/layout/activity_main_page_activity.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/layout/activity_order_by_user_activity.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/layout/activity_shop_detail_activity.xml" value="0.17" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.22604166666666667" />
+        <entry key="app/src/main/res/layout/direct_product_fetch.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/fetch_all_business_along_main.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/layout/fetch_all_product.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/layout/reset_password.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/menu/navigation.xml" value="0.10833333333333334" />
       </map>
     </option>
   </component>

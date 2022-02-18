@@ -77,13 +77,13 @@ public class login_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
-        Create_account_user=findViewById(R.id.create_account);
+        Create_account_user=findViewById(R.id.Register_here);
         setTitle("Login");
-        input_email=findViewById(R.id.et_email);
-        input_password=findViewById(R.id.et_password);
-        sinIn=findViewById(R.id.email_sign_in_button);
+        input_email=findViewById(R.id.register_user_email);
+        input_password=findViewById(R.id.user_register_password);
+        sinIn=findViewById(R.id.login_email);
         relativeLayout=findViewById(R.id.login_form);
-        for_get_password=findViewById(R.id.forget_password);
+        for_get_password=findViewById(R.id.user_forget_password);
         Create_account_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -271,10 +271,10 @@ public class login_activity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.reset_password, null);
 
         dialogBuilder.setView(dialogView);
-        dialogBuilder.setTitle("Forgot Password");
+        dialogBuilder.setTitle("Reset Password");
         dialogBuilder.setCancelable(false);
 
-        final TextInputLayout mEditEmail = dialogView.findViewById(R.id.editEmail);
+        final TextInputLayout mEditEmail = dialogView.findViewById(R.id.reset_email);
 
         dialogBuilder.setPositiveButton("Reset",  new DialogInterface.OnClickListener() {
             @Override

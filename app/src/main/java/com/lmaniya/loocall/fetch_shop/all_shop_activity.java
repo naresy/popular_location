@@ -32,6 +32,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -47,6 +48,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.lmaniya.loocall.MainActivity;
 import com.lmaniya.loocall.R;
 
 import org.json.JSONArray;
@@ -111,6 +113,11 @@ public class all_shop_activity extends AppCompatActivity implements OnMapReadyCa
     LocationRequest mLocationRequest;
     double dist;
 
+    //bottom
+    private  final int Id_home=1;
+    private  final  int Id_profile=2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +125,44 @@ public class all_shop_activity extends AppCompatActivity implements OnMapReadyCa
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+//bottom
+        MeowBottomNavigation bottomNavigation=findViewById(R.id.negation);
+        bottomNavigation.add(new MeowBottomNavigation.Model(Id_home,R.drawable.ic_near));
+
+
+
+
+        bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                String name ;
+                switch (item.getId())
+                {
+                    case Id_home:name="home";
+
+                        break;
+
+
+
+
+                    default:name="";
+
+
+                }
+
+            }
+        });
+        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
+                startActivity(new Intent(all_shop_activity.this,near_by_shop.class));
+
+            }
+        });
+        bottomNavigation.setCount(Id_home,"Near");
+        bottomNavigation.show(Id_home,true);
+
+        //
 
         Subcategory_list = (GridView) findViewById(R.id.my_view);
         relativeLayout=findViewById(R.id.relative);
@@ -125,14 +170,7 @@ public class all_shop_activity extends AppCompatActivity implements OnMapReadyCa
         setTitle("All profile");
         progressDialog=new ProgressDialog(this);
         sharedPreferences=getSharedPreferences("All_shop",0);
-        floatingActionButton=findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(all_shop_activity.this,near_by_shop.class);
-                startActivity(intent);
-            }
-        });
+
 
         //Receiving the ListView Clicked item value send by previous activity.
         final String TempItem = getIntent().getStringExtra("ListViewValue");

@@ -3,6 +3,7 @@ package com.lmaniya.loocall.direct;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -31,6 +32,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -46,6 +48,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.lmaniya.loocall.MainActivity;
 import com.lmaniya.loocall.R;
 import com.lmaniya.loocall.fetch_shop.near_by_shop;
 
@@ -99,6 +102,9 @@ public class Direct_product_activity extends AppCompatActivity  implements OnMap
     GoogleApiClient mGoogleApiClient;
     LocationRequest mLocationRequest;
     double dist;
+    //Direct
+    private  final int Id_home=1;
+
 
 
     @Override
@@ -116,18 +122,59 @@ public class Direct_product_activity extends AppCompatActivity  implements OnMap
         relativeLayout=findViewById(R.id.direct_layout);
          sharedPreferences=getSharedPreferences("All_shop",0);
         swipeRefreshLayout=findViewById(R.id.refresh);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        floatingActionButton=findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+
+        // Create a custom SpanSizeLookup where the first item spans both columns
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(Direct_product_activity.this, near_by_shop.class);
-                startActivity(intent);
+            public int getSpanSize(int position) {
+                return position == 3 ? 1 : 1;
             }
         });
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+
         setTitle("Direct shop");
+
+        //
+
+        MeowBottomNavigation bottomNavigation=findViewById(R.id.negation);
+        bottomNavigation.add(new MeowBottomNavigation.Model(Id_home,R.drawable.ic_near));
+
+        bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+            @Override
+            public void onClickItem(MeowBottomNavigation.Model item) {
+
+            }
+        });
+        bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                String name ;
+                switch (item.getId())
+                {
+                    case Id_home:name="home";
+                        break;
+
+
+                    default:name="";
+
+
+                }
+
+            }
+        });
+        bottomNavigation.setCount(Id_home,"Near");
+        bottomNavigation.show(Id_home,true);
+        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
+                startActivity(new Intent(Direct_product_activity.this,near_by_shop.class));
+            }
+        });
+
+        //
+
+
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

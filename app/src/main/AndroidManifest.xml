@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lmaniya.loocall">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -23,8 +24,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".welcome_activity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+
+        <activity
+            android:name=".welcome_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Main_page_activity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -215,17 +231,7 @@
         <activity
             android:name=".login.profile.user_profile_activity"
             android:parentActivityName=".Main_page_activity" />
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
-        -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -239,10 +245,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".admin.admin_profile" />
         <activity android:name=".login.email_verification" />
-        <activity android:name=".login.register" />
+        <activity android:name=".login.register"
+            android:theme="@style/Theme.Nandi_taxi."/>
         <activity
             android:name=".login.login_activity"
-            android:parentActivityName=".Main_page_activity" />
+            android:parentActivityName=".Main_page_activity"
+            android:theme="@style/Theme.Nandi_taxi."/>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main_page_activity" />

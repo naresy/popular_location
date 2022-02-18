@@ -20,23 +20,37 @@
                 android:numColumns="2"
                 android:id="@+id/my_view"
                 android:layout_height="match_parent"/>
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="50sp"
-                android:layout_height="50sp"
-                android:layout_gravity="bottom|end"
-                android:layout_margin="@dimen/fab_margin"
 
-                android:background="@drawable/unnamed"
-                tools:ignore="VectorDrawableCompat"/>
-            <TextView android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="Near"
-                android:elevation="6dp"
-                android:textSize="18dp"
-                android:textColor="#fff"
-                app:layout_anchor="@id/fab"
-                app:layout_anchorGravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+
+
+                    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+                        android:id="@+id/negation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        app:mbn_backgroundBottomColor="@color/colorPrimaryDark"
+                        app:mbn_circleColor="@color/circlecolor"
+                        app:mbn_countBackgroundColor="@color/countTextColor"
+                        app:mbn_defaultIconColor="@color/defaultIconColor"
+                        app:mbn_selectedIconColor="@color/selectediconColor"
+                        app:mbn_shadowColor="@color/shadowcolor">
+
+                    </com.etebarian.meowbottomnavigation.MeowBottomNavigation>
+
+                </LinearLayout>
+
+
+
+
+
+
+
 
 
 

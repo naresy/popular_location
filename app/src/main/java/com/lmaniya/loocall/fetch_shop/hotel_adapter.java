@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -63,9 +64,9 @@ public class hotel_adapter extends BaseAdapter {
 
                 convertView = layoutInfiater.inflate(R.layout.fetch_all_product, null);
 
-                viewItem.sub_category_name = (TextView) convertView.findViewById(R.id.Categories_name);
+                viewItem.sub_category_name = (TextView) convertView.findViewById(R.id.sub_business_name);
                 viewItem.click = convertView.findViewById(R.id.card_view);
-                viewItem.sub_image = convertView.findViewById(R.id.Categories_image);
+                viewItem.sub_image = convertView.findViewById(R.id.sub_business_image);
 
 
                 convertView.setTag(viewItem);
@@ -105,7 +106,7 @@ public class hotel_adapter extends BaseAdapter {
 
     class fetch_class {
         TextView sub_category_name, id;
-        CardView click;
+        LinearLayout click;
         ImageView sub_image;
 
 

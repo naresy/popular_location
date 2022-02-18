@@ -1,5 +1,6 @@
 package com.lmaniya.loocall.direct;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import com.lmaniya.loocall.fetch_shop.shop_detail_activity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
@@ -36,7 +39,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
+    public void onBindViewHolder(MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.name.setText(contacts.get(position).getName());
 
 
@@ -51,7 +54,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             ex.printStackTrace();
         }
 
-        holder.shop_now.setOnClickListener(new View.OnClickListener() {
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(context.getApplicationContext(), shop_detail_activity.class);
@@ -111,16 +114,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView name,product_price,initail_price,shop_now,discoun;
-        ImageView imageView;
+        TextView name,product_price,initail_price,discoun;
+        CircleImageView imageView;
         public MyViewHolder(View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.product_title);
-            product_price=itemView.findViewById(R.id.product_price);
-            imageView=itemView.findViewById(R.id.product_image);
-            initail_price=itemView.findViewById(R.id.product_attribute);
-            shop_now=itemView.findViewById(R.id.shop_now);
-            discoun=itemView.findViewById(R.id.discount);
+            name = itemView.findViewById(R.id.direct_shop_name);
+            //product_price=itemView.findViewById(R.id.product_price);
+            imageView=itemView.findViewById(R.id.direct_shop_image);
+           // initail_price=itemView.findViewById(R.id.product_attribute);
+
+           // discoun=itemView.findViewById(R.id.discount);
 
 
 
