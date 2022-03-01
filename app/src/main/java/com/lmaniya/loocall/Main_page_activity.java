@@ -10,11 +10,13 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -40,6 +42,7 @@ import com.lmaniya.loocall.super_admin.school.school_activity;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
@@ -164,6 +167,14 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
 
             }
         });
+        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
+
+            }
+        });
+        bottomNavigation.setCount(id_message,"Message");
+        bottomNavigation.setCount(id_fast_business,"Fast");
 
         bottomNavigation.show(Id_home,true);
 
@@ -200,8 +211,6 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
         relativeLayout=findViewById(R.id.main_page_layout);
         progressDialog = new ProgressDialog(this);
         recyclerView = findViewById(R.id.categories_data_view);
-//        layoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(layoutManager);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
 
         // Create a custom SpanSizeLookup where the first item spans both columns
@@ -216,12 +225,6 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
         recyclerView.setLayoutManager(layoutManager);
         swipeRefreshLayout=findViewById(R.id.swipe);
         progressDialog=new ProgressDialog(this);
-
-//        bottomNavigationBehavior=new BottomNavigationBehavior();
-//        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-//        final CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
-//        layoutParams.setBehavior(bottomNavigationBehavior);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -386,32 +389,12 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
 
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment;
-            switch (item.getItemId()) {
-                case R.id.navigation_checkout:
-                    startActivity(new Intent(Main_page_activity.this, Direct_product_activity.class));
-                    return true;
-
-
-
-            }
-            return false;
-        }
-    };
 
 
 
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-            || super.onSupportNavigateUp();
-    }
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -556,4 +539,6 @@ public class Main_page_activity extends AppCompatActivity implements NavigationV
         return true;
 
     }
+
+
 }

@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class categories_api {
-    public static final String BASE_URL = "https://huntsewa.com/hunt_new/add_room/fetch_all_room.php/";
+    public static final String BASE_URL = "https://lmaniya.com.np/hunt_new/add_room/fetch_all_room.php/";
     public static Retrofit retrofit;
 
     public static Retrofit getApiClient(){

@@ -31,7 +31,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.snackbar.Snackbar;
 import com.lmaniya.loocall.R;
+import com.lmaniya.loocall.add_room.SliderAdapter;
+import com.lmaniya.loocall.add_room.SliderData;
+import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class shell_detail_activity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -83,11 +88,52 @@ public class shell_detail_activity extends AppCompatActivity implements OnMapRea
         address.setText(address_value);
         phone.setText(phone_value);
         type.setText(room_type);
-        Picasso.get().load(image1_value).into(image1);
-        Picasso.get().load(image2_value).into(image2);
+        try {
+            Picasso.get().load(image1_value).into(image1);
+            Picasso.get().load(image2_value).into(image2);
+        } catch (IllegalArgumentException ex)
+        {
+            ex.printStackTrace();
+        }
+
 
 
         mapFragment.getMapAsync(this);
+
+        //
+
+        ArrayList<SliderData> sliderDataArrayList = new ArrayList<>();
+
+
+        // initializing the slider view.
+        SliderView sliderView = findViewById(R.id.slider);
+
+        // adding the urls inside array list
+        sliderDataArrayList.add(new SliderData(image1_value));
+        sliderDataArrayList.add(new SliderData(image2_value));
+        // sliderDataArrayList.add(new SliderData(url3));
+
+        // passing this array list inside our adapter class.
+        SliderAdapter adapter = new SliderAdapter(this, sliderDataArrayList);
+
+        // below method is used to set auto cycle direction in left to
+        // right direction you can change according to requirement.
+        sliderView.setAutoCycleDirection(SliderView.LAYOUT_DIRECTION_LTR);
+
+        // below method is used to
+        // setadapter to sliderview.
+        sliderView.setSliderAdapter(adapter);
+
+        // below method is use to set
+        // scroll time in seconds.
+        sliderView.setScrollTimeInSec(3);
+
+        // to set it scrollable automatically
+        // we use below method.
+        sliderView.setAutoCycle(true);
+
+        // to start autocycle below method is used.
+        sliderView.startAutoCycle();//
     }
 
 

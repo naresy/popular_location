@@ -31,7 +31,7 @@ public class Categories_adapter extends RecyclerView.Adapter<Categories_adapter.
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fetch_all_business_along_main, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fetch_room, parent, false);
         return new MyViewHolder(view);
     }
 

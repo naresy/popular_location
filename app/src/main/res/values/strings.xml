@@ -20,4 +20,5 @@
     <string name="start">start</string>
     <string name="next">next</string>
     <string name="title_activity_tetx">tetx</string>
+    <string name="title_activity_start_main">start_main</string>
 </resources>

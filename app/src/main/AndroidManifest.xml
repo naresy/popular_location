@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lmaniya.loocall">
-
+    package="com.lmaniya.loocall" >
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -23,7 +22,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -37,19 +36,20 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-
         <activity
             android:name=".welcome_activity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Main_page_activity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:hardwareAccelerated="true"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".contact_us_activity"
-            android:parentActivityName=".Main_page_activity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".about_activity"
-            android:parentActivityName=".Main_page_activity" />
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".fetch_shop.near_by_shop" />
         <activity android:name=".super_admin.req_area.sale_req.accept_sale" />
         <activity android:name=".super_admin.req_area.sale_req.req_sale_activity" />
@@ -67,16 +67,17 @@
             android:parentActivityName=".login.profile.user_profile_activity" />
         <activity
             android:name=".shell.near_me_sale"
-            android:parentActivityName=".Main_page_activity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".shell.add_shell_activity"
-            android:parentActivityName=".shell.shell_activity" />
+            android:parentActivityName=".shell.shell_activity"
+            android:theme="@style/Theme.Nandi_taxi." />
         <activity
             android:name=".shell.shell_detail_activity"
             android:parentActivityName=".shell.shell_activity" />
         <activity
             android:name=".shell.shell_activity"
-            android:parentActivityName=".Main_page_activity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".business_user_profile.print.print_bill_for_admin"
             android:parentActivityName=".business_user_profile.business_user_profile" />
@@ -94,13 +95,15 @@
             android:parentActivityName=".add_room.see_room_activity" />
         <activity
             android:name=".add_room.add_room_activity"
-            android:parentActivityName=".add_room.see_room_activity" />
+            android:parentActivityName=".add_room.see_room_activity"
+            android:theme="@style/Theme.Nandi_taxi." />
         <activity
             android:name=".add_room.see_room_activity"
-            android:parentActivityName=".Main_page_activity" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.Nandi_taxi." />
         <activity
             android:name=".show_section.near_me_hospital.near_me_hospital"
-            android:parentActivityName=".Main_page_activity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".super_admin.school.update_hospital"
             android:parentActivityName=".super_admin.super_admin_dash_board" />
@@ -112,7 +115,7 @@
             android:parentActivityName=".super_admin.super_admin_dash_board" />
         <activity
             android:name=".show_section.near_me_school.near_me_school"
-            android:parentActivityName=".Main_page_activity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".super_admin.hospital.update_school"
             android:parentActivityName=".super_admin.super_admin_dash_board" />
@@ -124,7 +127,7 @@
             android:parentActivityName=".super_admin.super_admin_dash_board" />
         <activity
             android:name=".show_section.near_by_me"
-            android:parentActivityName=".Main_page_activity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".super_admin.bank.update_bank"
             android:parentActivityName=".super_admin.super_admin_dash_board" />
@@ -156,7 +159,7 @@
             android:parentActivityName=".super_admin.super_admin_dash_board" />
         <activity
             android:name=".direct.Direct_product_activity"
-            android:parentActivityName=".Main_page_activity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".business_user_profile.order.order_by_user_activity"
             android:parentActivityName=".business_user_profile.business_user_profile" />
@@ -230,7 +233,7 @@
             android:parentActivityName=".login.profile.user_profile_activity" />
         <activity
             android:name=".login.profile.user_profile_activity"
-            android:parentActivityName=".Main_page_activity" />
+            android:parentActivityName=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -244,19 +247,20 @@
             android:name=".admin.dashboard.dassh_board"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".admin.admin_profile" />
-        <activity android:name=".login.email_verification" />
-        <activity android:name=".login.register"
+        <activity android:name=".login.email_verification"
             android:theme="@style/Theme.Nandi_taxi."/>
+        <activity
+            android:name=".login.register"
+            android:theme="@style/Theme.Nandi_taxi." />
         <activity
             android:name=".login.login_activity"
             android:parentActivityName=".Main_page_activity"
-            android:theme="@style/Theme.Nandi_taxi."/>
+            android:theme="@style/Theme.Nandi_taxi." />
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main_page_activity" />
+            android:name=".MainActivity"/>
         <activity
             android:name=".splash_screen"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -272,14 +276,14 @@
             android:name="firebase_analytics_collection_enabled"
             android:value="false" />
 
-        <service android:name=".fcm.MyFirebaseInstanceIDService">
+        <service android:name=".fcm.MyFirebaseInstanceIDService" >
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
         <service
             android:name=".fcm.MyFirebaseMessagingService"
-            android:exported="false">
+            android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

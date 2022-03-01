@@ -1,61 +1,460 @@
 package com.lmaniya.loocall;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+import com.lmaniya.loocall.add_room.see_room_activity;
+import com.lmaniya.loocall.direct.Direct_product_activity;
+import com.lmaniya.loocall.fetch_shop.fetch_product.customer.my_cart_activity;
+import com.lmaniya.loocall.login.helper.DatabaseHandler;
+import com.lmaniya.loocall.login.helper.SessionManager;
+import com.lmaniya.loocall.login.login_activity;
+import com.lmaniya.loocall.login.profile.user_profile_activity;
+import com.lmaniya.loocall.shell.shell_activity;
+import com.lmaniya.loocall.super_admin.bank.bank_activity;
+import com.lmaniya.loocall.super_admin.hospital.hospital_activity;
 
+import java.util.HashMap;
+import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private AppBarConfiguration mAppBarConfiguration;
+    TextView name;
+    private DatabaseHandler db;
+    SessionManager sessionManager;
+    private HashMap<String,String> user = new HashMap<>();
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private List<categories_data> C_data;
+    private Categories_adapter categories_adapter;
+    private categories_api_interface categories_api_interface;
+    ProgressDialog progressDialog;
+    SwipeRefreshLayout swipeRefreshLayout;
+    BottomNavigationBehavior bottomNavigationBehavior;
+
+    public static int TYPE_WIFI = 1;
+    public static int TYPE_MOBILE = 2;
+    public static int TYPE_NOT_CONNECTED = 0;
+    private Snackbar snackbar;
+    RelativeLayout relativeLayout;
+    private boolean internetConnected=true;
+
+    String role;
+    String user_id,user_name;
+
+    // bottom
     private  final int Id_home=1;
     private  final int id_message=2;
-    private  final int id_notification=3;
+    private  final int id_fast_business=3;
     private  final int id_account=4;
+
+    public  MeowBottomNavigation bottomNavigation;
+
+    LinearLayout my_profile,my_cart,sale,room,school,bank,hospital,ime,restaurant;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final TextView selected_page=findViewById(R.id.selected_page);
-        MeowBottomNavigation bottomNavigation=findViewById(R.id.negation);
-        bottomNavigation.add(new MeowBottomNavigation.Model(Id_home,R.drawable.text_home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(id_message,R.drawable.text_home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(id_notification,R.drawable.text_home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(id_account,R.drawable.text_home));
-       bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
-           @Override
-           public void onClickItem(MeowBottomNavigation.Model item) {
-               Toast.makeText(MainActivity.this,"clickeditem" +item.getId(),Toast.LENGTH_SHORT).show();
-           }
-       });
-         bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
-             @Override
-             public void onShowItem(MeowBottomNavigation.Model item) {
-                 String name ;
-                 switch (item.getId())
-                 {
-                     case Id_home:name="home";
-                         break;
-                     case id_message:name="Message";
-                         break;
-                     case  id_notification:name="Notification";
-                         break;
-                     case  id_account:name="Account";
-                         break;
-                     default:name="";
+
+        //bottom
+        setTitle("");
+        bottomNavigation=findViewById(R.id.negation_main);
+        bottomNavigation.add(new MeowBottomNavigation.Model(Id_home,R.drawable.ic_house));
+        bottomNavigation.add(new MeowBottomNavigation.Model(id_message,R.drawable.ic_chat));
+        bottomNavigation.add(new MeowBottomNavigation.Model(id_fast_business,R.drawable.ic_direct));
+        bottomNavigation.add(new MeowBottomNavigation.Model(id_account,R.drawable.ic_login));
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        bottomNavigationBehavior=new BottomNavigationBehavior();
+        name=findViewById(R.id.name);
+
+        //
+        my_profile=findViewById(R.id.my_profile);
+
+        my_cart=findViewById(R.id.my_cart);
+        sale=findViewById(R.id.My_sale);
+        room=findViewById(R.id.find_room);
+        school=findViewById(R.id.School);
+        bank=findViewById(R.id.Bank);
+        hospital=findViewById(R.id.hospital);
+        ime=findViewById(R.id.ime);
+        restaurant=findViewById(R.id.Resturent);
+        db=new DatabaseHandler(getApplicationContext());
+        user=db.getUserDetails();
+        user_name=user.get("name");
+        name.setText(user_name);
+        sessionManager= new SessionManager(getApplicationContext());
+
+        my_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (sessionManager.isroller()==0) {
 
 
-                 }
-                 selected_page.setText("hello"+name);
-             }
-         });
-         bottomNavigation.setCount(id_notification,"4");
-         bottomNavigation.show(Id_home,true);
+                    startActivity(new Intent(MainActivity.this, user_profile_activity.class));
+                }
+                else {
+                    startActivity(new Intent(MainActivity.this, login_activity.class));
+                }
+            }
+        });
+
+        my_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (sessionManager.isroller()==0) {
+
+
+                    startActivity(new Intent(MainActivity.this, my_cart_activity.class));
+                }
+                else {
+                    startActivity(new Intent(MainActivity.this, login_activity.class));
+                }
+            }
+        });
+
+        sale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, shell_activity.class));
+            }
+        });
+
+        room.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, see_room_activity.class));
+            }
+        });
+        school.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, hospital_activity.class));
+            }
+        });
+        bank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, bank_activity.class));
+            }
+        });
+        ime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+        // session
+        role=getIntent().getStringExtra("role");
+        db = new DatabaseHandler(getApplicationContext());
+        user = db.getUserDetails();
+        user_id=user.get("uid");
+        user_name=user.get("name");
+
+
+
+        bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+            @Override
+            public void onClickItem(MeowBottomNavigation.Model item) {
+
+            }
+        });
+        bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                String name ;
+                switch (item.getId())
+                {
+                    case id_message:name="Message";
+                        break;
+                    case  id_fast_business:name="Direct Product";
+                        startActivity(new Intent(MainActivity.this, Direct_product_activity.class));
+                        break;
+                    case id_account:name="Account";
+                    break;
+
+                    default:name="";
+                }
+            }
+        });
+        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
+            }
+        });
+        bottomNavigation.setCount(id_message,"Message");
+        bottomNavigation.setCount(id_fast_business,"Fast");
+        bottomNavigation.setCount(Id_home,"Home");
+        bottomNavigation.setCount(id_account,"Account");
+        bottomNavigation.show(Id_home,true);
+        relativeLayout=findViewById(R.id.relative);
+        progressDialog = new ProgressDialog(this);
+        recyclerView = findViewById(R.id.categories_data_view);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+
+        // Create a custom SpanSizeLookup where the first item spans both columns
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position == 3 ? 1 : 1;
+            }
+        });
+
+
+        recyclerView.setLayoutManager(layoutManager);
+        swipeRefreshLayout=findViewById(R.id.swipe);
+        progressDialog=new ProgressDialog(this);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if (isConnected())
+                {
+
+                    swipeRefreshLayout.setRefreshing(false);
+
+                    getData("users", "");
+
+                } else {
+                    Toast.makeText(MainActivity.this,"Please check your internet connection",Toast.LENGTH_SHORT).show();
+                    swipeRefreshLayout.setRefreshing(false);
+
+                }
+            }
+        });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (!recyclerView.canScrollVertically(1) && dy > 0)
+                {
+
+                    //scrolled to bottom
+                }else if (!recyclerView.canScrollVertically(-1) && dy < 0)
+                {
+                    swipeRefreshLayout.setEnabled(true);
+                }
+                else {
+                    swipeRefreshLayout.setEnabled(false);
+                }
+            }
+        });
+        getData("users", "");
     }
+
+    public boolean isConnected() {
+        boolean connected = false;
+        try {
+            ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo nInfo = cm.getActiveNetworkInfo();
+            connected = nInfo != null && nInfo.isAvailable() && nInfo.isConnected();
+            return connected;
+        } catch (Exception e) {
+            Log.e("Connectivity Exception", e.getMessage());
+        }
+        return connected;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        registerInternetCheckReceiver();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(broadcastReceiver);
+    }
+    /**
+     *  Method to register runtime broadcast receiver to show snackbar alert for internet connection..
+     */
+    private void registerInternetCheckReceiver() {
+        IntentFilter internetFilter = new IntentFilter();
+        internetFilter.addAction("android.net.wifi.STATE_CHANGE");
+        internetFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        registerReceiver(broadcastReceiver, internetFilter);
+    }
+
+    /**
+     *  Runtime Broadcast receiver inner class to capture internet connectivity events
+     */
+    public BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String status = getConnectivityStatusString(context);
+            setSnackbarMessage(status,false);
+        }
+    };
+
+    public static int getConnectivityStatus(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (null != activeNetwork) {
+            if(activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
+                return TYPE_WIFI;
+
+            if(activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE)
+                return TYPE_MOBILE;
+        }
+        return TYPE_NOT_CONNECTED;
+    }
+
+    public static String getConnectivityStatusString(Context context) {
+        int conn = getConnectivityStatus(context);
+        String status = null;
+        if (conn == TYPE_WIFI) {
+            status = "Wifi enabled";
+        } else if (conn == TYPE_MOBILE) {
+            status = "Mobile data enabled";
+        } else if (conn == TYPE_NOT_CONNECTED) {
+            status = "Not connected to Internet";
+        }
+        return status;
+    }
+
+
+    private void setSnackbarMessage(String status,boolean showBar) {
+        String internetStatus = "";
+        if (status.equalsIgnoreCase("Wifi enabled") || status.equalsIgnoreCase("Mobile data enabled")) {
+            internetStatus = "Internet Connected";
+        } else {
+            internetStatus = "Lost Internet Connection";
+        }
+        snackbar = Snackbar
+                .make(relativeLayout, internetStatus, Snackbar.LENGTH_LONG)
+                .setAction("X", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        snackbar.dismiss();
+                    }
+                });
+        // Changing message text color
+        snackbar.setActionTextColor(Color.WHITE);
+        // Changing action button text color
+        View sbView = snackbar.getView();
+        TextView textView = (TextView) sbView.findViewById(R.id.snackbar_text);
+        textView.setTextColor(Color.WHITE);
+        if (internetStatus.equalsIgnoreCase("Lost Internet Connection")) {
+            if (internetConnected) {
+                snackbar.show();
+                internetConnected = false;
+            }
+        } else {
+            if (!internetConnected) {
+                internetConnected = true;
+                snackbar.show();
+            }
+        }
+    }
+
+
+    public void getData(String type, String key) {
+        progressDialog.setTitle("Loading...");
+        progressDialog.show();
+
+
+        categories_api_interface = categories_api.getApiClient().create(categories_api_interface.class);
+
+        Call<List<categories_data>> call = categories_api_interface.getData(type, key);
+        call.enqueue(new Callback<List<categories_data>>() {
+            @Override
+            public void onResponse(Call<List<categories_data>> call, Response<List<categories_data>> response) {
+                progressDialog.dismiss();
+
+                swipeRefreshLayout.setRefreshing(false);
+                C_data = response.body();
+
+                categories_adapter = new Categories_adapter(C_data, MainActivity.this);
+                recyclerView.setAdapter(categories_adapter);
+                categories_adapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onFailure(Call<List<categories_data>> call, Throwable t) {
+                progressDialog.dismiss();
+
+                swipeRefreshLayout.setRefreshing(false);
+                // Toast.makeText(main_page_activity.this, "Error\n" + t.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_main, menu);
+
+
+
+
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+
+                getData("users", query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                getData("users", newText);
+
+                return false;
+            }
+
+
+        });
+
+        return true;
+
+    }
+
+
+
 }

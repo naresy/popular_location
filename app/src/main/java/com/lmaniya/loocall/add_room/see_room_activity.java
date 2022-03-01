@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.ui.AppBarConfiguration;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -37,6 +38,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -57,7 +59,12 @@ import com.lmaniya.loocall.BottomNavigationBehavior;
 import com.lmaniya.loocall.R;
 import com.lmaniya.loocall.login.helper.DatabaseHandler;
 import com.lmaniya.loocall.login.helper.SessionManager;
+import com.lmaniya.loocall.shell.add_shell_activity;
+import com.lmaniya.loocall.shell.near_me_sale;
+import com.lmaniya.loocall.shell.shell_activity;
+import com.smarteist.autoimageslider.SliderView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -105,6 +112,10 @@ public class see_room_activity extends AppCompatActivity implements   OnMapReady
            public static Double dist;
            SharedPreferences sharedPreferences;
 
+           //
+           private final int Id_home = 1;
+           private final int id_message = 2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,20 +137,94 @@ public class see_room_activity extends AppCompatActivity implements   OnMapReady
         progressDialog=new ProgressDialog(this);
         floatingActionButton=findViewById(R.id.fab);
         sessionManager= new SessionManager(getApplicationContext());
-        layoutManager = new LinearLayoutManager(this);
+
+
+        //
+
+        //
+        
+
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
+
+        // Create a custom SpanSizeLookup where the first item spans both columns
+        layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position == 3 ? 1 : 1;
+            }
+        });
         recyclerView.setLayoutManager(layoutManager);
+
         setTitle("Find Room");
         sharedPreferences=getSharedPreferences("hospital",0);
 
+        //
+
+        MeowBottomNavigation bottomNavigation = findViewById(R.id.negation);
+        bottomNavigation.add(new MeowBottomNavigation.Model(Id_home, R.drawable.text_home));
+        bottomNavigation.add(new MeowBottomNavigation.Model(id_message, R.drawable.ic_near));
+
+        bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+            @Override
+            public void onClickItem(MeowBottomNavigation.Model item) {
+
+            }
+        });
+        bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                String name;
+                switch (item.getId()) {
+                    case Id_home:
+                        name = "home";
+                        break;
+                    case id_message:
+                        name = "Message";
+                        startActivity(new Intent(see_room_activity.this, near_me_room.class));
+                        break;
+
+
+                    default:
+                        name = "";
+
+
+                }
+
+            }
+        });
+        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
+
+                if (user_id!=null)
+                {
+
+                    if (sessionManager.isroller()==0)
+                    {
+                        startActivity(new Intent(see_room_activity.this, add_room_activity.class));
+
+                    }
+                    else {
+                        Toast.makeText(see_room_activity.this,"You don't have permission",Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                else {
+                    Toast.makeText(see_room_activity.this,"Please login first",Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        });
+        bottomNavigation.setCount(id_message, "Near");
+        bottomNavigation.setCount(Id_home,"+");
+        bottomNavigation.show(Id_home, true);
 
 
 
 
-            bottomNavigationBehavior = new BottomNavigationBehavior();
-            BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-            navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-            final CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
-            layoutParams.setBehavior(bottomNavigationBehavior);
+
+
 
 
 
@@ -164,6 +249,7 @@ public class see_room_activity extends AppCompatActivity implements   OnMapReady
 
             }
         });
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -183,14 +269,7 @@ public class see_room_activity extends AppCompatActivity implements   OnMapReady
 
 
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(see_room_activity.this, near_me_room.class);
 
-                startActivity(intent);
-            }
-        });
 
         getData("users", "");
 
@@ -454,38 +533,7 @@ public class see_room_activity extends AppCompatActivity implements   OnMapReady
 
 
 
-           private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-                   = new BottomNavigationView.OnNavigationItemSelectedListener() {
-               @Override
-               public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                   Fragment fragment;
-                   switch (item.getItemId()) {
-                       case R.id.add_room:
-                           if (user_id!=null)
-                           {
 
-                               if (sessionManager.isroller()==0)
-                               {
-                                   startActivity(new Intent(see_room_activity.this, add_room_activity.class));
-                                   return true;
-                               }
-                               else {
-                                   Toast.makeText(see_room_activity.this,"You don't have permission",Toast.LENGTH_SHORT).show();
-                               }
-
-                           }
-                           else {
-                               Toast.makeText(see_room_activity.this,"Please login first",Toast.LENGTH_SHORT).show();
-
-                           }
-
-
-
-
-                   }
-                   return false;
-               }
-           };
 
 
            public void getData(String type, String key) {

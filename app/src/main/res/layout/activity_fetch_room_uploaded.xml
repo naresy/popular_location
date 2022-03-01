@@ -23,7 +23,18 @@
            </GridView>
 
 
-
+            <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+                android:id="@+id/negation_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:mbn_backgroundBottomColor="@color/colorPrimaryDark"
+                app:mbn_circleColor="@color/circlecolor"
+                app:mbn_countBackgroundColor="@color/countTextColor"
+                app:mbn_defaultIconColor="@color/defaultIconColor"
+                app:mbn_selectedIconColor="@color/selectediconColor"
+                app:mbn_shadowColor="@color/shadowcolor">
+            </com.etebarian.meowbottomnavigation.MeowBottomNavigation>
 
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

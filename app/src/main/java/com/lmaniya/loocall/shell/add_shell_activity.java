@@ -61,19 +61,22 @@ public class add_shell_activity extends AppCompatActivity {
     final Calendar myCalendar = Calendar.getInstance();
     String postURL="https://lmaniya.com.np/hunt_new/add_sale/add_sale.php";
     String name,user_id,user_name;
+
+    //
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_shell_activity);
-        room_type=findViewById(R.id.room_tpe);
+        room_type=findViewById(R.id.title);
         owner_phone=findViewById(R.id.owner_phone);
         owner_name=findViewById(R.id.owner_name);
         full_address=findViewById(R.id.full_address);
         latitude=findViewById(R.id.latitude);
         longitude=findViewById(R.id.longitude);
-        description=findViewById(R.id.description);
-        image=findViewById(R.id.image);
-        image2=findViewById(R.id.image1);
+        description=findViewById(R.id.description_sale);
+        image=findViewById(R.id.image1);
+        image2=findViewById(R.id.image2);
         add=findViewById(R.id.add);
         get_location=findViewById(R.id.get);
         progressDialog=new ProgressDialog(this);

@@ -59,7 +59,7 @@ public class add_room_activity extends AppCompatActivity {
     ProgressDialog progressDialog;
     Bitmap bitmap,bitmap1;
     final Calendar myCalendar = Calendar.getInstance();
-    String postURL="add_room/add_room.php";
+    String postURL="https://lmaniya.com.np/hunt_new/add_room/add_room.php";
     String name,user_id,user_name;
 
 
@@ -68,15 +68,15 @@ public class add_room_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_room_activity);
 
-        room_type=findViewById(R.id.room_tpe);
+        room_type=findViewById(R.id.title);
         owner_phone=findViewById(R.id.owner_phone);
         owner_name=findViewById(R.id.owner_name);
         full_address=findViewById(R.id.full_address);
         latitude=findViewById(R.id.latitude);
         longitude=findViewById(R.id.longitude);
-        description=findViewById(R.id.description);
-        image=findViewById(R.id.image);
-        image2=findViewById(R.id.image1);
+        description=findViewById(R.id.description_room);
+        image=findViewById(R.id.image1);
+        image2=findViewById(R.id.image2);
         add=findViewById(R.id.add);
         setTitle("Add Room for find ");
         get_location=findViewById(R.id.get);
@@ -237,22 +237,7 @@ public class add_room_activity extends AppCompatActivity {
     }
 
 
-    public static boolean isfileEmpty(EditText view) {
-        String value = view.getText().toString();
-        if (value.length() > 0) {
-            return true;
-        } else
-            view.setError("enter value");
-        return false;
-    }
-    public static boolean istext(TextView view) {
-        String value = view.getText().toString();
-        if (value.length() > 0) {
-            return true;
-        } else
-            view.setError("enter value");
-        return false;
-    }
+
 
 
     private void cooseimagefromfile() {
@@ -304,7 +289,22 @@ public class add_room_activity extends AppCompatActivity {
         return encodeImage;
 
     }
-
+    public static boolean isfileEmpty(EditText view) {
+        String value = view.getText().toString();
+        if (value.length() > 0) {
+            return true;
+        } else
+            view.setError("enter value");
+        return false;
+    }
+    public static boolean istext(TextView view) {
+        String value = view.getText().toString();
+        if (value.length() > 0) {
+            return true;
+        } else
+            view.setError("enter value");
+        return false;
+    }
 
 
 }

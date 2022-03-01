@@ -1,5 +1,6 @@
 package com.lmaniya.loocall.shell;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -33,7 +34,7 @@ public class Categories_adapter extends RecyclerView.Adapter<Categories_adapter.
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.Categories_name.setText(C_data.get(position).getRoom_type());
         try {
             Picasso.get().load(C_data.get(position).getCategories_image()).into(holder.Categories_image);
@@ -86,7 +87,7 @@ public class Categories_adapter extends RecyclerView.Adapter<Categories_adapter.
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            Categories_name = itemView.findViewById(R.id.Categories_name);
+            Categories_name = itemView.findViewById(R.id.business_name);
             Categories_image = itemView.findViewById(R.id.Categories_image);
             Categories_view=itemView.findViewById(R.id.categories_cardview);
 

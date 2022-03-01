@@ -23,10 +23,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.snackbar.Snackbar;
 import com.lmaniya.loocall.R;
+import com.lmaniya.loocall.add_room.add_room_activity;
 import com.lmaniya.loocall.login.helper.DatabaseHandler;
-
+import com.lmaniya.loocall.login.profile.room.fetch_room_uploaded;
+import com.lmaniya.loocall.shell.add_shell_activity;
 
 
 import org.json.JSONArray;
@@ -81,7 +84,12 @@ public class fetch_all_upload_sale extends AppCompatActivity {
     private boolean internetConnected=true;
     ProgressDialog progressDialog;
     String userid;
+    private  final int Id_home=1;
+    private  final int id_message=2;
+    private  final int id_fast_business=3;
+    private  final int id_account=4;
 
+    public MeowBottomNavigation bottomNavigation;
 
 
     @Override
@@ -102,6 +110,42 @@ public class fetch_all_upload_sale extends AppCompatActivity {
         setTitle("Uploaded sale");
 
 
+
+        bottomNavigation=findViewById(R.id.negation_main);
+        bottomNavigation.add(new MeowBottomNavigation.Model(Id_home,R.drawable.ic_house));
+
+
+        bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+            @Override
+            public void onClickItem(MeowBottomNavigation.Model item) {
+
+            }
+        });
+        bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                String name ;
+                switch (item.getId())
+                {
+                    case Id_home:name="Home";
+
+                        break;
+
+
+
+                    default:name="";
+                }
+            }
+        });
+        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
+
+                startActivity(new Intent(fetch_all_upload_sale.this, add_shell_activity.class));
+            }
+        });
+        bottomNavigation.setCount(Id_home,"+");
+        bottomNavigation.show(Id_home,true);
 
 
 

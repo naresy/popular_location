@@ -4,29 +4,71 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1125" />
+        <entry key="../../Downloads/Djpashupati/gradle/caches/transforms-2/files-2.1/3295ea0441a742a3de2973ce69a80f60/jetified-library-1.1.5/res/layout/slider_layout.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/drawable/border_line_for_button.xml" value="0.2265625" />
+        <entry key="app/src/main/res/drawable/ic_add_cart.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/drawable/ic_camera_ic.xml" value="0.12447916666666667" />
+        <entry key="app/src/main/res/drawable/ic_description.xml" value="0.12083333333333333" />
+        <entry key="app/src/main/res/drawable/ic_doctor.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/drawable/ic_email.xml" value="0.12760416666666666" />
         <entry key="app/src/main/res/drawable/ic_email_icon.xml" value="0.12447916666666667" />
         <entry key="app/src/main/res/drawable/ic_facebook.xml" value="0.12760416666666666" />
+        <entry key="app/src/main/res/drawable/ic_flat.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/drawable/ic_latitude.xml" value="0.12083333333333333" />
         <entry key="app/src/main/res/drawable/ic_location.xml" value="0.12447916666666667" />
+        <entry key="app/src/main/res/drawable/ic_logout.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/drawable/ic_longitude.xml" value="0.12083333333333333" />
+        <entry key="app/src/main/res/drawable/ic_medical_report.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/drawable/ic_my_order.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/drawable/ic_my_profile.xml" value="0.10260416666666666" />
+        <entry key="app/src/main/res/drawable/ic_notification.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/drawable/ic_pass.xml" value="0.12760416666666666" />
         <entry key="app/src/main/res/drawable/ic_password.xml" value="0.12760416666666666" />
         <entry key="app/src/main/res/drawable/ic_person_icon.xml" value="0.12447916666666667" />
+        <entry key="app/src/main/res/drawable/ic_phone_black_18dp.xml" value="0.10260416666666666" />
+        <entry key="app/src/main/res/drawable/ic_photo.xml" value="0.12447916666666667" />
+        <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.10260416666666666" />
+        <entry key="app/src/main/res/drawable/ic_red_light.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/drawable/ic_sale_ic.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/drawable/ic_type_.xml" value="0.12083333333333333" />
+        <entry key="app/src/main/res/drawable/person_icon.xml" value="0.10260416666666666" />
+        <entry key="app/src/main/res/drawable/phone_icon.xml" value="0.10260416666666666" />
+        <entry key="app/src/main/res/drawable/rectangle.xml" value="0.12447916666666667" />
+        <entry key="app/src/main/res/layout/activity_add_room_activity.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_add_shell_activity.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/layout/activity_all_shop_activity.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/layout/activity_detail_activity2.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/activity_detail_product_activity.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/layout/activity_detail_profile_activity.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_direct_product_activity.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/layout/activity_email_verification.xml" value="0.22604166666666667" />
+        <entry key="app/src/main/res/layout/activity_fetch_all_upload_sale.xml" value="0.22604166666666667" />
+        <entry key="app/src/main/res/layout/activity_fetch_room_uploaded.xml" value="0.16927083333333334" />
         <entry key="app/src/main/res/layout/activity_login_activity.xml" value="0.21" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main_page_activity.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.10833333333333334" />
         <entry key="app/src/main/res/layout/activity_order_by_user_activity.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/layout/activity_see_room_activity.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_shell_activity.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_shell_detail_activity.xml" value="0.22604166666666667" />
         <entry key="app/src/main/res/layout/activity_shop_detail_activity.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/activity_user_profile_activity.xml" value="0.16875" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.22604166666666667" />
+        <entry key="app/src/main/res/layout/cart_rom.xml" value="0.1546875" />
+        <entry key="app/src/main/res/layout/custom_toast.xml" value="0.1" />
         <entry key="app/src/main/res/layout/direct_product_fetch.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fetch_all_business_along_main.xml" value="0.11145833333333334" />
         <entry key="app/src/main/res/layout/fetch_all_product.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/layout/fetch_room.xml" value="0.1" />
         <entry key="app/src/main/res/layout/reset_password.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/layout/slider_layout_view.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/menu/navigation.xml" value="0.10833333333333334" />
+        <entry key="app/src/main/res/menu/search_main.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/menu/start__main_.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/menu/start_main.xml" value="0.14947916666666666" />
       </map>
     </option>
   </component>

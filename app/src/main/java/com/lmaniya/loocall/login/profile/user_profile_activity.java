@@ -35,6 +35,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.lmaniya.loocall.HttpParse;
@@ -87,6 +88,10 @@ public class user_profile_activity extends AppCompatActivity {
     String notofication_value="notify",stop="stop";
     HashMap<String, String> hashMap = new HashMap<>();
 
+    private  final int Id_home=1;
+    public MeowBottomNavigation bottomNavigation;
+
+
     String finalResult,HttpURL="https://lmaniya.com.np/hunt_new/update_user.php",stop_url="https://lmaniya.com.np/hunt_new/stop_notification.php" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +108,7 @@ public class user_profile_activity extends AppCompatActivity {
         transcation=findViewById(R.id.upload_room);
         change_password=findViewById(R.id.upload_sale);
         find_doc=findViewById(R.id.find_doc);
+        fullname=findViewById(R.id.user_fullname);
         help=findViewById(R.id.help);
         pDialog=new ProgressDialog(this);
         help.setOnClickListener(new View.OnClickListener() {
@@ -167,6 +173,7 @@ public class user_profile_activity extends AppCompatActivity {
         session = new SessionManager(getApplicationContext());
         usersid=user.get("uid");
         name_value=user.get("name");
+        fullname.setText(name_value);
         mu_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

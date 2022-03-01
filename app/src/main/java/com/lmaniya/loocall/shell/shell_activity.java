@@ -37,6 +37,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -54,9 +55,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.lmaniya.loocall.BottomNavigationBehavior;
+import com.lmaniya.loocall.MainActivity;
 import com.lmaniya.loocall.R;
+import com.lmaniya.loocall.add_room.add_room_activity;
+import com.lmaniya.loocall.add_room.see_room_activity;
 import com.lmaniya.loocall.login.helper.DatabaseHandler;
 import com.lmaniya.loocall.login.helper.SessionManager;
+import com.lmaniya.loocall.login.login_activity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -69,7 +74,7 @@ public class shell_activity extends AppCompatActivity implements OnMapReadyCallb
         LocationListener, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
 
-    public  static  Double latitude,longitude;
+    public static Double latitude, longitude;
     private GoogleMap mMap;
     Location mLastLocation;
     Marker mCurrLocationMarker;
@@ -81,7 +86,7 @@ public class shell_activity extends AppCompatActivity implements OnMapReadyCallb
     TextView login;
     private DatabaseHandler db;
     SessionManager sessionManager;
-    private HashMap<String,String> user = new HashMap<>();
+    private HashMap<String, String> user = new HashMap<>();
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private List<categories_data> C_data;
@@ -95,13 +100,17 @@ public class shell_activity extends AppCompatActivity implements OnMapReadyCallb
     public static int TYPE_NOT_CONNECTED = 0;
     private Snackbar snackbar;
     RelativeLayout relativeLayout;
-    private boolean internetConnected=true;
+    private boolean internetConnected = true;
     BottomNavigationBehavior bottomNavigationBehavior;
     String role;
-    String user_id,user_name;
+    String user_id, user_name;
     FloatingActionButton floatingActionButton;
     public static Double dist;
     SharedPreferences sharedPreferences;
+
+    //
+    private final int Id_home = 1;
+    private final int id_message = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,30 +121,92 @@ public class shell_activity extends AppCompatActivity implements OnMapReadyCallb
         mapFragment.getMapAsync(this);
 
 
-        recyclerView=findViewById(R.id.categories_data_view);
-        swipeRefreshLayout=findViewById(R.id.swipe);
-        relativeLayout=findViewById(R.id.relative);
+        recyclerView = findViewById(R.id.categories_data_view);
+        swipeRefreshLayout = findViewById(R.id.swipe);
+        relativeLayout = findViewById(R.id.relative);
         db = new DatabaseHandler(getApplicationContext());
         user = db.getUserDetails();
-        user_id=user.get("uid");
-        user_name=user.get("name");
+        user_id = user.get("uid");
+        user_name = user.get("name");
         setTitle("All sale");
-        progressDialog=new ProgressDialog(this);
-        floatingActionButton=findViewById(R.id.fab);
-        sessionManager= new SessionManager(getApplicationContext());
+        progressDialog = new ProgressDialog(this);
+
+        sessionManager = new SessionManager(getApplicationContext());
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        sharedPreferences=getSharedPreferences("hospital",0);
+        sharedPreferences = getSharedPreferences("hospital", 0);
+
+
+        //
+
+        MeowBottomNavigation bottomNavigation = findViewById(R.id.negation);
+        bottomNavigation.add(new MeowBottomNavigation.Model(Id_home, R.drawable.text_home));
+        bottomNavigation.add(new MeowBottomNavigation.Model(id_message, R.drawable.ic_near));
+
+        bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+            @Override
+            public void onClickItem(MeowBottomNavigation.Model item) {
+
+            }
+        });
+        bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                String name;
+                switch (item.getId()) {
+                    case Id_home:
+                        name = "home";
+                        break;
+                    case id_message:
+                        name = "Message";
+                        startActivity(new Intent(shell_activity.this, near_me_sale.class));
+                        break;
+
+
+                    default:
+                        name = "";
+
+
+                }
+
+            }
+        });
+        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
+
+                if (user_id!=null)
+                {
+
+                    if (sessionManager.isroller()==0)
+                    {
+                        startActivity(new Intent(shell_activity.this, add_shell_activity.class));
+
+                    }
+                    else {
+                        Toast.makeText(shell_activity.this,"You don't have permission",Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                else {
+                    Toast.makeText(shell_activity.this,"Please login first",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(shell_activity.this, login_activity.class));
+
+                }
+
+            }
+        });
+        bottomNavigation.setCount(id_message, "Near");
+        bottomNavigation.setCount(Id_home,"+");
+        bottomNavigation.show(Id_home, true);
 
 
 
 
 
-        bottomNavigationBehavior = new BottomNavigationBehavior();
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        final CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
-        layoutParams.setBehavior(bottomNavigationBehavior);
+
+
+
 
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -178,14 +249,7 @@ public class shell_activity extends AppCompatActivity implements OnMapReadyCallb
 
 
 
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(shell_activity.this, near_me_sale.class);
 
-                startActivity(intent);
-            }
-        });
 
         getData("users", "");
 
@@ -447,22 +511,8 @@ public class shell_activity extends AppCompatActivity implements OnMapReadyCallb
 
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment;
-            switch (item.getItemId()) {
-                case R.id.add_sale:
-                    startActivity(new Intent(shell_activity.this, add_shell_activity.class));
-                    return true;
 
 
-
-            }
-            return false;
-        }
-    };
 
 
     public void getData(String type, String key) {

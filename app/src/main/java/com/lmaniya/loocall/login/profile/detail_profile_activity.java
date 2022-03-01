@@ -67,6 +67,7 @@ public class detail_profile_activity extends AppCompatActivity  implements Adapt
     String name_value;
     RadioGroup radioGroup;
     ImageView imageView;
+    RadioButton Male,Female;
     String[] Didtrict = {"Achham",
             "Arghakhanchi",
             "Baglung",
@@ -159,7 +160,7 @@ public class detail_profile_activity extends AppCompatActivity  implements Adapt
     HashMap<String,String> ResultHash = new HashMap<>();
     HttpParse httpParse = new HttpParse();
     ProgressDialog pDialog;
-    String fet_image,fet_date,fet_phone,fet_village,fet_address1,fet_address2,fet_postal,fet_relation,fet_work;
+   public  String fet_image,fet_date,fet_phone,fet_village,fet_address1,fet_address2,fet_postal,fet_relation,fet_work,gender_value;
 
 
 
@@ -175,6 +176,9 @@ public class detail_profile_activity extends AppCompatActivity  implements Adapt
         name_value = getIntent().getStringExtra("name");
         userid=getIntent().getStringExtra("userid");
         full_name.setText(name_value);
+        Male=findViewById(R.id.identification_gender_male);
+        Male.setChecked(true);
+        Female=findViewById(R.id.identification_gender_female);
         Date_of_birth = findViewById(R.id.identification_birth_date_text_view);
         phone = findViewById(R.id.identification_phone_number);
         village = findViewById(R.id.identification_city);
@@ -381,87 +385,6 @@ public class detail_profile_activity extends AppCompatActivity  implements Adapt
         }
     }
 
-    private void upload_information() {
-
-            progressDialog.setTitle("Loading...");
-            progressDialog.show();
-           final String date_of_birth=Date_of_birth.getText().toString();
-//        RadioButton cehck=findViewById(radioGroup.getCheckedRadioButtonId());
-//                //String gender=cehck.getText().toString();
-                final String phone_value=phone.getText().toString();
-                final String village_value=village.getText().toString();
-                final String address1_value=address1.getText().toString();
-                final String address2_value=address2.getText().toString();
-                final String Postal_code=postal_code.getText().toString();
-                final String relation_value=relation.getText().toString();
-
-
-
-            StringRequest stringRequest=new StringRequest(Request.Method.POST, postURL,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                JSONObject jsonObject = new JSONObject(response);
-                                String Success = jsonObject.getString("success");
-                                if (Success.equals("1")) {
-                                    Toast.makeText(detail_profile_activity.this,"Your profile added\n",Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(detail_profile_activity.this, user_profile_activity.class));
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                                Toast.makeText(detail_profile_activity.this,"Error!"+e,Toast.LENGTH_LONG).show();
-                                progressDialog.dismiss();
-
-                            }
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(detail_profile_activity.this,"Error!"+error,Toast.LENGTH_LONG).show();
-                    progressDialog.dismiss();
-
-                }
-            })
-            {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String,String>params=new HashMap<>();
-                    params.put("user_id",userid);
-                    try {
-                        params.put("image",getStringImage(bitmap));
-                    } catch (NullPointerException ex)
-                    {
-                        ex.printStackTrace();
-                        params.put("image_value",fet_image);
-                    }
-
-                    params.put("date_birth",date_of_birth);
-                    params.put("phone",phone_value);
-                   // params.put("district",county_get);
-                   // params.put("state",state_get);
-                    params.put("village",village_value);
-                    params.put("address1",address1_value);
-                    params.put("address2",address2_value);
-                    params.put("postal_code",Postal_code);
-                    params.put("relation",relation_value);
-                    //params.put("occupation",occupation_get);
-//                    params.put("economic_status",echonomic_get);
-//                    params.put("Education_status",education_get);
-
-
-
-                    return params;
-                }
-            };
-            RequestQueue requestQueue= Volley.newRequestQueue(this);
-            requestQueue.add(stringRequest);
-        }
-
-
-
-
-
     private void HttpWebCall(final String PreviousListViewClickedItem){
 
         class HttpWebCallFunction extends AsyncTask<String,Void,String> {
@@ -541,8 +464,9 @@ public class detail_profile_activity extends AppCompatActivity  implements Adapt
                             fet_address2 = jsonObject.getString("address2");
                             fet_postal = jsonObject.getString("postal_code");
                             fet_relation = jsonObject.getString("relation");
-                            fet_work=jsonObject.getString("occupation");
-                            fet_date=jsonObject.getString("date_birth");
+                            fet_work = jsonObject.getString("occupation");
+                            fet_date = jsonObject.getString("date_birth");
+                            gender_value = jsonObject.getString("gender");
 
                         }
                     } catch (JSONException e) {
@@ -566,22 +490,118 @@ public class detail_profile_activity extends AppCompatActivity  implements Adapt
             postal_code.setText(fet_postal);
             relation.setText(fet_relation);
             work.setText(fet_work);
-
-
-
             try {
-                Picasso.get().load(fet_image).into(imageView);
-            } catch (IllegalArgumentException ex)
-            {
+
+
+                RadioButton final_check=findViewById(radioGroup.getCheckedRadioButtonId());
+                String final_check_value=final_check.getText().toString();
+                if (final_check_value.equals(gender_value))
+                {
+                    Male.setChecked(true);
+
+                }
+                else {
+                    Female.setChecked(true);
+                }
+
+            } catch (NullPointerException ex) {
 
             }
 
 
+            try {
+                Picasso.get().load(fet_image).into(imageView);
+            } catch (IllegalArgumentException ex) {
 
+            }
 
 
         }
+    }
+
+
+        private void upload_information() {
+
+            progressDialog.setTitle("Loading...");
+            progressDialog.show();
+            final String date_of_birth=Date_of_birth.getText().toString();
+            RadioButton cehck=findViewById(radioGroup.getCheckedRadioButtonId());
+            final String gender=cehck.getText().toString();
+            final String phone_value=phone.getText().toString();
+            final String village_value=village.getText().toString();
+            final String address1_value=address1.getText().toString();
+            final String address2_value=address2.getText().toString();
+            final String Postal_code=postal_code.getText().toString();
+            final String relation_value=relation.getText().toString();
+
+
+
+            StringRequest stringRequest=new StringRequest(Request.Method.POST, postURL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                String Success = jsonObject.getString("success");
+                                if (Success.equals("1")) {
+                                    Toast.makeText(detail_profile_activity.this,"Your profile added\n",Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(detail_profile_activity.this, user_profile_activity.class));
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(detail_profile_activity.this,"Error!"+e,Toast.LENGTH_LONG).show();
+                                progressDialog.dismiss();
+
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(detail_profile_activity.this,"Error!"+error,Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
+
+                }
+            })
+            {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String,String>params=new HashMap<>();
+                    params.put("user_id",userid);
+                    try {
+                        params.put("image",getStringImage(bitmap));
+                    } catch (NullPointerException ex)
+                    {
+                        ex.printStackTrace();
+                        params.put("image_value",fet_image);
+
+                    }
+
+                    params.put("date_birth",date_of_birth);
+                    params.put("phone",phone_value);
+                    // params.put("district",county_get);
+                    // params.put("state",state_get);
+                    params.put("village",village_value);
+                    params.put("address1",address1_value);
+                    params.put("address2",address2_value);
+                    params.put("postal_code",Postal_code);
+                    params.put("relation",relation_value);
+                    params.put("gender",gender);
+                    //params.put("occupation",occupation_get);
+//                    params.put("economic_status",echonomic_get);
+//                    params.put("Education_status",education_get);
+
+
+
+                    return params;
+                }
+            };
+            RequestQueue requestQueue= Volley.newRequestQueue(this);
+            requestQueue.add(stringRequest);
+        }
+
 
 
     }
-}
+
+
+

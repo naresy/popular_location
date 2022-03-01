@@ -22,8 +22,13 @@ import android.widget.GridView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.snackbar.Snackbar;
+import com.lmaniya.loocall.MainActivity;
 import com.lmaniya.loocall.R;
+import com.lmaniya.loocall.add_room.add_room_activity;
+import com.lmaniya.loocall.direct.Direct_product_activity;
 import com.lmaniya.loocall.login.helper.DatabaseHandler;
 
 
@@ -80,6 +85,15 @@ public class fetch_room_uploaded extends AppCompatActivity {
     ProgressDialog progressDialog;
     String userid;
 
+    //
+
+    private  final int Id_home=1;
+    private  final int id_message=2;
+    private  final int id_fast_business=3;
+    private  final int id_account=4;
+
+    public MeowBottomNavigation bottomNavigation;
+
 
 
 
@@ -97,6 +111,42 @@ public class fetch_room_uploaded extends AppCompatActivity {
        userid=user.get("uid");
        setTitle("Uploaded Room");
 
+
+        bottomNavigation=findViewById(R.id.negation_main);
+        bottomNavigation.add(new MeowBottomNavigation.Model(Id_home,R.drawable.ic_house));
+
+
+        bottomNavigation.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+            @Override
+            public void onClickItem(MeowBottomNavigation.Model item) {
+
+            }
+        });
+        bottomNavigation.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                String name ;
+                switch (item.getId())
+                {
+                    case Id_home:name="Home";
+
+                        break;
+
+
+
+                    default:name="";
+                }
+            }
+        });
+        bottomNavigation.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+            @Override
+            public void onReselectItem(MeowBottomNavigation.Model item) {
+
+                startActivity(new Intent(fetch_room_uploaded.this, add_room_activity.class));
+            }
+        });
+        bottomNavigation.setCount(Id_home,"+");
+        bottomNavigation.show(Id_home,true);
 
 
 

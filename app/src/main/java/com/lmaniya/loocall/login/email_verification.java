@@ -13,9 +13,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.lmaniya.loocall.Main_page_activity;
 import com.lmaniya.loocall.R;
 import com.lmaniya.loocall.business_user_profile.business_user_profile;
+import com.lmaniya.loocall.custom_toast;
 import com.lmaniya.loocall.login.helper.DatabaseHandler;
 import com.lmaniya.loocall.login.helper.Functions;
 import com.lmaniya.loocall.login.helper.SessionManager;
@@ -47,7 +51,7 @@ public class email_verification extends AppCompatActivity {
 
     private static final String TAG = email_verification.class.getSimpleName();
 
-    private TextInputLayout textVerifyCode;
+    private TextInputLayout one,two,three,four,five,six;
     private TextView btnVerify, btnResend;
     private TextView otpCountDown;
     private SessionManager session;
@@ -68,6 +72,8 @@ public class email_verification extends AppCompatActivity {
     private Snackbar snackbar;
     RelativeLayout relativeLayout;
     private boolean internetConnected=true;
+    //
+    EditText c_1,c_2,c_3,c_4,c_5,c_6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,22 +81,165 @@ public class email_verification extends AppCompatActivity {
         setContentView(R.layout.activity_email_verification);
         setTitle("verification");
 
-        textVerifyCode = findViewById(R.id.email_verification_code_layout);
-        btnVerify = findViewById(R.id.email_verification);
-        btnResend = findViewById(R.id.email_verification_code_resend);
+
+        c_1 = findViewById(R.id.digit_1);
+        c_2 = findViewById(R.id.digit_2);
+        c_3 = findViewById(R.id.digit_3);
+        c_4 = findViewById(R.id.digit_4);
+        c_5 = findViewById(R.id.digit_5);
+        c_6 = findViewById(R.id.digit_6);
+        btnVerify = findViewById(R.id.confirm_code);
+        btnResend = findViewById(R.id.resend_code);
         otpCountDown = findViewById(R.id.email_verification_time);
         bundle = getIntent().getExtras();
         db = new DatabaseHandler(getApplicationContext());
         session = new SessionManager(getApplicationContext());
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        relativeLayout=findViewById(R.id.email_verify_layout);
+        relativeLayout=findViewById(R.id.verify_layout);
 
 
         // Hide Keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         init();
+
+        c_1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (c_1.getText().length()==1)
+                {
+                    c_2.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+
+        });
+        c_2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (c_2.getText().length()==1)
+                {
+                    c_3.requestFocus();
+                }
+                else if (c_2.getText().length()==0)
+                {
+                    c_1.requestFocus();
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        c_3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (c_3.getText().length()==1)
+                {
+                    c_4.requestFocus();
+                }
+                else if (c_3.getText().length()==0)
+                {
+                    c_2.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        c_4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (c_4.getText().length()==1)
+                {
+                    c_5.requestFocus();
+
+                }
+                else if (c_4.getText().length()==0)
+                {
+                    c_3.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        c_5.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (c_5.getText().length()==1)
+                {
+                    c_6.requestFocus();
+                }
+                else if (c_5.getText().length()==0)
+                {
+                    c_4.requestFocus();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        c_6.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (c_6.getText().length()==0)
+                {
+                    c_5.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     // check connection
@@ -195,12 +344,24 @@ public class email_verification extends AppCompatActivity {
                 Functions.hideSoftKeyboard(email_verification.this);
 
                 String email = bundle.getString("email");
-                String otp = textVerifyCode.getEditText().getText().toString();
-                if (!otp.isEmpty()) {
-                    verifyCode(email, otp);
-                    textVerifyCode.setErrorEnabled(false);
-                } else {
-                    textVerifyCode.setError("Please enter verification code");
+
+                if (isfileEmpty(c_1) && isfileEmpty(c_2) && isfileEmpty(c_3) && isfileEmpty(c_4) && isfileEmpty(c_5) && isfileEmpty(c_6)) {
+                    String code1 = c_1.getText().toString();
+                    String code2 = c_2.getText().toString();
+                    String code3 = c_3.getText().toString();
+                    String code4 = c_4.getText().toString();
+                    String code5 = c_5.getText().toString();
+                    String code6 = c_6.getText().toString();
+                    String otp = code1 + code2 + code3 + code4 + code5 + code6;
+
+
+                    if (!otp.isEmpty()) {
+                        verifyCode(email, otp);
+
+                    } else {
+                        new custom_toast().Show_Toast(email_verification.this, v,
+                                "Please enter otp");
+                    }
                 }
             }
         });
@@ -227,6 +388,7 @@ public class email_verification extends AppCompatActivity {
                     TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                     TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) - TimeUnit.MINUTES.toSeconds(
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)) ));
+
             }
 
             public void onFinish() {
@@ -307,7 +469,7 @@ public class email_verification extends AppCompatActivity {
 
                     } else {
                         Toast.makeText(getApplicationContext(), "Invalid Verification Code", Toast.LENGTH_LONG).show();
-                        textVerifyCode.setError("Invalid Verification Code");
+
                     }
                 } catch (JSONException e) {
                     // JSON error
@@ -432,6 +594,14 @@ public class email_verification extends AppCompatActivity {
         super.onResume();
         countDown();
         registerInternetCheckReceiver();
+    }
+    public static boolean isfileEmpty(EditText view) {
+        String value = view.getText().toString();
+        if (value.length() > 0) {
+            return true;
+        } else
+            view.setError("enter value");
+        return false;
     }
 }
 
